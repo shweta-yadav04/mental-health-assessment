@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Intelligence</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+			 background-image: url('bg2.jpg'); 
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #b19cd9;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            border-bottom: 2px solid #b19cd9;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        ul {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px 20px 20px 40px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .quiz-container {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .quiz-question {
+            margin-bottom: 25px;
+        }
+        .quiz-question p {
+            margin-bottom: 10px;
+        }
+        .slider-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .slider {
+            -webkit-appearance: none;
+            width: 70%;
+            height: 10px;
+            border-radius: 5px;
+            background: #4a4a4a;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+        .slider:hover {
+            opacity: 1;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #b19cd9;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #b19cd9;
+            cursor: pointer;
+        }
+        .slider-value {
+            width: 30px;
+            text-align: center;
+            font-weight: bold;
+            color: #b19cd9;
+        }
+        button {
+            background-color: #b19cd9;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #9a7dc8;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
+            color: #b19cd9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Understanding Emotional Intelligence</h1>
+        
+        <p>Emotional Intelligence (EI) is the ability to recognize, understand, and manage our own emotions, as well as the emotions of others. It plays a crucial role in personal and professional success.</p>
+        
+        <h2>Key Components of Emotional Intelligence</h2>
+        <ul>
+            <li><strong>Self-awareness:</strong> Recognizing and understanding your own emotions</li>
+            <li><strong>Self-regulation:</strong> Managing your emotions and impulses</li>
+            <li><strong>Motivation:</strong> Using emotions to achieve goals</li>
+            <li><strong>Empathy:</strong> Recognizing and understanding others' emotions</li>
+            <li><strong>Social skills:</strong> Managing relationships and building networks</li>
+        </ul>
+        
+        <h2>Benefits of High Emotional Intelligence</h2>
+        <ul>
+            <li>Better communication and relationships</li>
+            <li>Improved leadership skills</li>
+            <li>Enhanced ability to handle stress</li>
+            <li>Greater job satisfaction and performance</li>
+            <li>Increased resilience in challenging situations</li>
+        </ul>
+        
+        <div class="quiz-container">
+            <h2>Quick Emotional Intelligence Self-Assessment</h2>
+            <p>Rate yourself on a scale of 1 (Strongly Disagree) to 5 (Strongly Agree) for each statement:</p>
+            
+            <div class="quiz-question">
+                <p>1. I can easily identify my emotions as I experience them.</p>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="q1" oninput="updateSliderValue(this)">
+                    <div class="slider-value" id="q1-value">3</div>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>2. I am able to control my temper and handle difficulties rationally.</p>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="q2" oninput="updateSliderValue(this)">
+                    <div class="slider-value" id="q2-value">3</div>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>3. I can recognize the emotions of others by observing their body language.</p>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="q3" oninput="updateSliderValue(this)">
+                    <div class="slider-value" id="q3-value">3</div>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>4. I am able to resolve conflicts and negotiate disagreements effectively.</p>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="q4" oninput="updateSliderValue(this)">
+                    <div class="slider-value" id="q4-value">3</div>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>5. I can easily adapt to new situations and am open to change.</p>
+                <div class="slider-container">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="q5" oninput="updateSliderValue(this)">
+                    <div class="slider-value" id="q5-value">3</div>
+                </div>
+            </div>
+            
+            <button onclick="calculateScore()">Calculate Score</button>
+            
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateSliderValue(slider) {
+            const value = slider.value;
+            const valueDisplay = document.getElementById(slider.id + '-value');
+            valueDisplay.textContent = value;
+        }
+
+        function calculateScore() {
+            let total = 0;
+            for (let i = 1; i <= 5; i++) {
+                total += parseInt(document.getElementById('q' + i).value);
+            }
+            let average = total / 5;
+            let result = document.getElementById('result');
+            result.innerHTML = `Your average score is ${average.toFixed(1)} out of 5.<br>`;
+            if (average < 2) {
+                result.innerHTML += "There's room for improvement in your emotional intelligence skills.";
+            } else if (average < 4) {
+                result.innerHTML += "You have a good foundation in emotional intelligence. Keep developing these skills!";
+            } else {
+                result.innerHTML += "Great job! You demonstrate strong emotional intelligence skills.";
+            }
+        }
+    </script>
+</body>
+</html>

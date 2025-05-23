@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery with Captions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+			background-image: url('bg2.jpg');
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f3e5f5;
+            color: #4a148c;
+        }
+        h1 {
+            text-align: center;
+            color: #4a148c;
+            border-bottom: 2px solid #7b1fa2;
+            padding-bottom: 10px;
+        }
+        .video-container {
+            margin-bottom: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        video {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .caption {
+            margin-top: 15px;
+            font-style: italic;
+            color: #7b1fa2;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>SOME VIDEO RESOURCES</h1>
+    
+    <div class="video-container">
+        <video controls>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p class="caption"><b>Feeling Stresses?</b>
+		Transform Stress into Serenity with These 10 Simple Steps 🌿.</p>
+    </div>
+
+    <div class="video-container">
+        <video controls>
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p class="caption">How to Deal with Anxiety ? Check out some effective measures</p>
+    </div>
+
+    <div class="video-container">
+        <video controls>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p class="caption">Teen's Mental Health.</p>
+    </div>
+	
+</body>
+</html>

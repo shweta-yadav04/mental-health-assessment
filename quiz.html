@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+	<style>
+	body {
+            
+            background-image: url('bg2.jpg'); 
+            
+        }
+		</style>
+</head>
+<body background-image="jgb.jpg">
+    <div class="container">
+        <h1>Mental Health Quiz</h1>
+        <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+        <div id="quizContainer">
+            <div id="question" class="question"></div>
+            <div id="options" class="options"></div>
+            <button id="nextBtn">Next</button>
+        </div>
+        <div id="result"></div>
+        <a href="main.html" class="back-link">Back to Main Page</a>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "How often do you feel overwhelmed by your daily responsibilities?",
+                options: ["Never", "Sometimes", "Often", "Always"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How would you rate your overall stress level?",
+                options: ["Low", "Moderate", "High", "Very high"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you have trouble falling asleep or staying asleep?",
+                options: ["Rarely", "Once or twice a week", "Several times a week", "Almost every night"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you feel down, depressed, or hopeless?",
+                options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you feel little interest or pleasure in doing things?",
+                options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you feel nervous, anxious, or on edge?",
+                options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you have trouble relaxing?",
+                options: ["Never", "Sometimes", "Often", "Always"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How would you rate your ability to cope with stress?",
+                options: ["Excellent", "Good", "Fair", "Poor"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you engage in activities you enjoy?",
+                options: ["Daily", "Several times a week", "Once a week", "Rarely or never"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How would you describe your energy levels most days?",
+                options: ["High", "Moderate", "Low", "Very low"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you have difficulty concentrating?",
+                options: ["Rarely", "Sometimes", "Often", "Almost always"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How would you rate your self-esteem?",
+                options: ["Very high", "High", "Moderate", "Low"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you feel lonely or isolated?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you experience physical symptoms of stress (e.g., headaches, muscle tension)?",
+                options: ["Never", "Rarely", "Sometimes", "Often"],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "How often do you practice self-care activities (e.g., exercise, meditation, hobbies)?",
+                options: ["Daily", "Several times a week", "Once a week", "Rarely or never"],
+                scores: [0, 3, 2, 1]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedOption = null;
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const nextBtn = document.getElementById('nextBtn');
+        const quizContainer = document.getElementById('quizContainer');
+        const resultEl = document.getElementById('result');
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionEl.textContent = question.question;
+
+            optionsEl.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('option');
+                button.onclick = () => selectOption(index);
+				 nextBtn.onclick = nextQuestion;
+                optionsEl.appendChild(button);
+            });
+
+           if (currentQuestion < questions.length - 1) {
+                 nextBtn.style.display = 'inline-block'; // Show the button if not the last question
+                } else {
+                   nextBtn.style.display = 'inline-block'; // Keep the button visible on the last question
+                   nextBtn.disabled = true; // Disable the button on the last question
+                }
+            updateProgressBar();
+        }
+
+        function selectOption(index) {
+            const options = optionsEl.getElementsByClassName('option');
+            for (let i = 0; i < options.length; i++) {
+                options[i].disabled = i !== index;
+                options[i].classList.toggle('selected', i === index);
+            }
+            selectedOption = index;
+            nextBtn.disabled = false;
+        }
+
+        
+		function nextQuestion() {
+            if (selectedOption !== null) {
+                score += questions[currentQuestion].scores[selectedOption];
+                currentQuestion++;
+
+               if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                 showResult();
+                }
+            }
+        }
+
+        function showResult() {
+            quizContainer.style.display = 'none';
+            const maxScore = questions.length * 3;
+            const stressLevel = (score / maxScore) * 100;
+
+            let resultText = `Your stress level score is ${score} out of ${maxScore} (${stressLevel.toFixed(1)}%).<br><br>`;
+
+            if (stressLevel < 25) {
+                resultText += "Your stress level appears to be low. Keep up the good work with your stress management techniques!";
+            } else if (stressLevel < 50) {
+                resultText += "Your stress level is moderate. Consider incorporating more stress-reduction activities into your daily routine.";
+            } else if (stressLevel < 75) {
+                resultText += "Your stress level is high. It may be helpful to speak with a mental health professional about stress management strategies.";
+            } else {
+                resultText += "Your stress level is very high. We strongly recommend consulting with a mental health professional for support and guidance.";
+            }
+
+            resultEl.innerHTML = resultText;
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        nextBtn.onclick = nextQuestion();
+        loadQuestion();
+    </script>
+</body>
+</html>

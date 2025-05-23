@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mental Health Assessment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background for the whole page */
+            color: #e0e0e0; /* Light text color for contrast */
+        }
+		body {
+		background-image: url('bg2.jpg');
+		}
+        .bg {
+            display: none; /* Background image hidden in dark mode */
+        }
+        .form-signin {
+            width: 100%;
+            max-width: 360px;
+            padding: 30px;
+            margin: auto;
+            background-color: #1e1e1e; /* Dark background for the form */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow for dark theme */
+        }
+        .form-floating:focus-within {
+            z-index: 2;
+            border-color: #007bff;
+        }
+        .btn-primary {
+            background-color: #1f6f3f; /* Dark green color for buttons */
+            border-color: #1f6f3f;
+        }
+        .btn-primary:hover {
+            background-color: #185e30; /* Darker green for hover effect */
+            border-color: #165b2b;
+        }
+        .btn-secondary-green {
+            background-color: #1f6f3f; /* Dark green color */
+            border-color: #1f6f3f;
+            color: #e0e0e0; /* Light text color */
+        }
+        .btn-secondary-green:hover {
+            background-color: #185e30; /* Darker green for hover */
+            border-color: #165b2b;
+        }
+        .google-btn {
+            background-color: #333; /* Dark background color */
+            color: #4285F4; /* Google blue color */
+            border: 1px solid #4285F4; /* Border to enhance visibility */
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .google-btn img {
+            width: 20px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .google-btn:hover {
+            background-color: #444; /* Slightly lighter background on hover */
+            border-color: #4285F4;
+            color: #4285F4;
+        }
+        .content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .action-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .action-container button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .or-divider {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+        .forgot-password {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .forgot-password a {
+            color: #1e88e5; /* Light blue color for the link */
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+		::placeholder {
+           color: #b0b0b0; /* Darker placeholder text color for better visibility */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <main class="form-signin">
+            <form id="loginForm" aria-labelledby="loginHeading">
+                <h1 id="loginHeading" class="h3 mb-4 fw-normal text-center">Welcome Back!</h1>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required aria-required="true">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required aria-required="true">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Sign in</button>
+                <div class="action-container">
+                    <button class="btn btn-lg btn-secondary-green" type="button" onclick="createAccount()">Create New Account</button>
+                    <span class="or-divider">OR</span>
+                    <button class="btn btn-lg google-btn" type="button" onclick="signInWithGoogle()">
+                        <img src="google_logo.png" alt="Google logo">
+                        Sign in with Google
+                    </button>
+                </div>
+                <div class="forgot-password">
+                    <a href="forgot-password.html">Forgot Password?</a>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            localStorage.setItem('isLoggedIn', 'true');
+            window.location.href = 'main.html'; // Redirect to the main page
+        });
+
+        function createAccount() {
+            window.location.href = 'createNew.html';
+        }
+
+        function signInWithGoogle() {
+            alert('Initiate Google Sign-In');
+            // Add Google Sign-In API integration here
+        }
+    </script>
+</body>
+</html>
+
